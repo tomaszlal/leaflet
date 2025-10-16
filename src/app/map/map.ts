@@ -8,7 +8,7 @@ import * as L from 'leaflet';
 })
 export class Map implements AfterViewInit {
 
-  private mapLeaflet: L.Map = L.map('map');
+  private mapLeaflet: L.Map | undefined;
 
   private initMap():void {
     this.mapLeaflet = L.map('map',{
@@ -16,6 +16,13 @@ export class Map implements AfterViewInit {
       zoom: 3
     });
   
+    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      minZoom: 3,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    });
+
+    tiles.addTo(this.mapLeaflet);
   }
 
   ngAfterViewInit(): void {
