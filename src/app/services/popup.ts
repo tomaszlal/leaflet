@@ -8,7 +8,7 @@ export class Popup {
   constructor() { }
 
   public makePopup(data: any):string {
-    return "kupa";
+    return "Place on map";
   }
 
 }
